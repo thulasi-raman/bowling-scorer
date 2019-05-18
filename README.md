@@ -1,2 +1,2 @@
 # bowling-scorer
-Used for calculatingBowling Game 
+Used for calculating Bowling Game 
