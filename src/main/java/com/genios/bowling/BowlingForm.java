@@ -6,7 +6,7 @@ import java.util.Map;
 public class BowlingForm {
 	
 	private String playerName;
-	private Map<Integer, Frame> bowlingFrames;
+	private List<Frame> bowlingFrames;
 	private Integer score;
 	private boolean isGameOver;
 	public String getPlayerName() {
@@ -15,10 +15,10 @@ public class BowlingForm {
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
-	public Map<Integer, Frame> getBowlingFrames() {
+	public List< Frame> getBowlingFrames() {
 		return bowlingFrames;
 	}
-	public void setBowlingFrames(Map<Integer, Frame> bowlingFrames) {
+	public void setBowlingFrames(List<Frame> bowlingFrames) {
 		this.bowlingFrames = bowlingFrames;
 	}
 	public Integer getScore() {

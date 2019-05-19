@@ -37,12 +37,11 @@
 						    			</tr>
 						    		</thead>
 			<tr th:each="bowlingFrame, frameInd: *{bowlingFrames}">
-	    	<td th:text="*{bowlingFrames[__${frameInd.index}__].index}"></td>
-			<td> <input  th:field="*{bowlingFrames[__${frameInd.index}__].roll1}"  /></td>
-			<td> <input  th:field="*{bowlingFrames[__${frameInd.index}__].roll2}"  /></td>
-			<td> <input  th:field="*{bowlingFrames[__${frameInd.index}__].roll3}"  /></td>
-			<td th:text="*{bowlingFrames[__${frameInd.index}__].isComplete}"></td>
-			<!--  <td> <input type="checkbox" name="strike" th:checked="*{bowlingFrames[__${frameInd.index}__].isComplete}" /></td> -->
+	    	<td th:text="*{bowlingFrames[__${frameInd.index}__].index></td>
+	    	
+	    	
+
+			<td input type="text" th:field="*{bowlingFrames[__${frameInd.index}__].roll1}" class="form-control" />
 
 							
 		</tr>

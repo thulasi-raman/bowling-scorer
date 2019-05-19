@@ -8,7 +8,7 @@ public class Frame {
 	private Integer roll3;
 	private Integer score;
 	
-	private boolean isStrike;
+	private Boolean isStrike;
 	private boolean isSpare;
 	private boolean isMiss;
 	private boolean isLastFrame;
@@ -17,7 +17,8 @@ public class Frame {
 	private String placeHolder1;
 	private String placeHolder2;
 	private String playerName;
-	private boolean flagHolder1;
+	private Boolean isComplete;
+	
 	public Integer getIndex() {
 		return index;
 	}
@@ -48,10 +49,10 @@ public class Frame {
 	public void setScore(Integer score) {
 		this.score = score;
 	}
-	public boolean isStrike() {
+	public Boolean isStrike() {
 		return isStrike;
 	}
-	public void setStrike(boolean isStrike) {
+	public void setStrike(Boolean isStrike) {
 		this.isStrike = isStrike;
 	}
 	public boolean isSpare() {
@@ -90,11 +91,11 @@ public class Frame {
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
-	public boolean isFlagHolder1() {
-		return flagHolder1;
+	public Boolean isComplete() {
+		return isComplete;
 	}
-	public void setFlagHolder1(boolean flagHolder1) {
-		this.flagHolder1 = flagHolder1;
+	public void setComplete(Boolean isComplete) {
+		this.isComplete = isComplete;
 	}
 	
 	

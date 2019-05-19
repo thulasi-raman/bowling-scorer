@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -20,13 +21,23 @@ public class HomeController {
 		return "home";
     }
 	
+	@PostMapping(value ={"/home","/"})
+    public String processBowlingScoreboard(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		model.addAttribute("bowlingForm", getBowlingForm());
+		return "home";
+    }
+	
 	private BowlingForm getBowlingForm()
 	{
-		Map<Integer, Frame> frames = new TreeMap<Integer, Frame>();
+		List<Frame> frames = new ArrayList<Frame>();
 		for(int i =1; i <=10; i++)
 		{
 			Frame frame = new Frame();
-			frames.put(i, frame);
+			frame.setIndex(i);
+			frame.setRoll1(5);
+			frame.setComplete(false);
+			frames.add(frame);
 		}
 		BowlingForm bowlingForm = new BowlingForm();
 		bowlingForm.setBowlingFrames(frames);
