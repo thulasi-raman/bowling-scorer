@@ -46,7 +46,7 @@
 				</tr>
 			</thead>
 			<tr th:each="bowlingFrame, frameInd: *{bowlingFrames}">
-		    	<td><input type="text" size="2" th:field="*{bowlingFrames[__${frameInd.index}__].index}" disabled="disabled"/></td>
+		    	<td><input type="text" size="2" th:field="*{bowlingFrames[__${frameInd.index}__].index}" readOnly="readOnly"/></td>
 				<td><input size="2" th:field="*{bowlingFrames[__${frameInd.index}__].roll1}"  /></td>
 				<td><input size="2" th:field="*{bowlingFrames[__${frameInd.index}__].roll2}"  /></td>
 				<td><input id="roll3Field" size="2"  th:field="*{bowlingFrames[__${frameInd.index}__].roll3}"  /></td>
