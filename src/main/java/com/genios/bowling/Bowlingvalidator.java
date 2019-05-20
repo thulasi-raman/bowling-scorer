@@ -47,7 +47,7 @@ public class Bowlingvalidator implements Validator{
 			errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Roll3 value for Frame " + frame.getIndex() + BowlingUtil.NULL_MESSAGE);
 		});
 
-		/*bowlingForm.getBowlingFrames()
+		bowlingForm.getBowlingFrames()
 		.stream().forEach(frame -> {
 			try {
 				frame.getRoll1().intValue();
@@ -55,7 +55,7 @@ public class Bowlingvalidator implements Validator{
 			} catch(NumberFormatException nfe) {
 				errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Roll1 value for Frame " + frame.getIndex() + " should be number");
 			}
-		});*/
+		});
 
 		/*.forEach(frame -> {
 			errors.rejectValue("errorMessage", "errorMessage", "Roll1 value for Frame " + frame.getIndex() + " should not be null");
@@ -116,18 +116,31 @@ public class Bowlingvalidator implements Validator{
 				if(frame.getIndex() != 10)
 				errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Sum of Rolls for Frame  " + frame.getIndex() + BowlingUtil.GREATER_THAN_10);
 			});
-			/*bowlingForm.getBowlingFrames()
+			bowlingForm.getBowlingFrames()
+			.stream()
+			.filter(frame -> frame.getRoll3().intValue()  != 0)
+			.collect(Collectors.toList())
+			.forEach(frame -> {
+				if(frame.getIndex() != 10)
+				errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Only zero is permitted in Roll3 for Frame  " + frame.getIndex());
+				else {
+					if(!frame.isSpare() || !frame.isStrike()) {
+						errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Roll3 score is considered only in case of Strike/Spare for Frame  " + frame.getIndex());
+					}
+
+				}
+			});
+			bowlingForm.getBowlingFrames()
 			.stream()
 			.filter(frame -> frame.getIndex() == 10)
 			.collect(Collectors.toList())
 			.forEach(frame -> {
 				if(frame.getRoll1()  + frame.getRoll2() + frame.getRoll3() > 30)
 				errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Sum of Rolls for Frame 10  " +  " cannot be greater than 30");
-			});*/
+			});
 
 		} catch(Exception e)
 		{
-			e.printStackTrace();
 			errors.rejectValue("errorMessage", "errorMessage", "Only numeric and non null Values are allowed");
 		}
 	}
