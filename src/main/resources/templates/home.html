@@ -5,60 +5,69 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 			<meta charset="utf-8" />
 			<title>Home - Bowling Score Card </title>
-			
+
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 			<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-			
+
 			<style type="text/css">
 				body {
 					padding-top: 50px;
 					padding-bottom: 20px;
 				}
 			</style>
-			
+			<script>
+				function makeRoll3Visible()
+				{
+					roll3Field.visible = true;
+				}
+			</script>
 		</head>
-<body>
+<body onload="makeRoll3Visible()">
 <div class="container">
+	<h1> Bowling Score Calculator</h1>
 <form action="#" th:action="@{/home}" th:object="${bowlingForm}" method="post" class="form-horizontal" role="form">
+	<ul id="validation-messages" th:if="${#fields.hasErrors('*')}">
+		<li class="alert alert-danger" th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+		</ul>
 		<table class="table table-hover">
 			<thead>
-						    			<tr>
-						    				<th> Frame </th>
-						    				<th> Roll1 </th>
-						    				<th> Roll2 </th>
-						    				<th> Roll3 </th>
-						    				<th> Strike </th>
-						    				<th> Spare </th>
-						    				<th> Miss </th>
-						    				<th> Complete </th>
-						    				<th> Score </th>
-						    				
-						    			</tr>
-						    		</thead>
-			<tr th:each="bowlingFrame, frameInd: *{bowlingFrames}">
-	    	<td th:text="*{bowlingFrames[__${frameInd.index}__].index}"></td>
-			<td> <input  th:field="*{bowlingFrames[__${frameInd.index}__].roll1}"  /></td>
-			<td> <input  th:field="*{bowlingFrames[__${frameInd.index}__].roll2}"  /></td>
-			<td> <input  th:field="*{bowlingFrames[__${frameInd.index}__].roll3}"  /></td>
-			<td th:text="*{bowlingFrames[__${frameInd.index}__].isComplete}"></td>
-			<!--  <td> <input type="checkbox" name="strike" th:checked="*{bowlingFrames[__${frameInd.index}__].isComplete}" /></td> -->
+				<tr>
+					<th> Frame </th>
+					<th> Roll1 </th>
+					<th> Roll2 </th>
+					<th> Roll3 </th>
+					<th> Score </th>
+					<th> Strike </th>
+					<th> Spare </th>
+					<th> Miss </th>
+					<!--  <th> Complete </th> -->
 
-							
-		</tr>
+				</tr>
+			</thead>
+			<tr th:each="bowlingFrame, frameInd: *{bowlingFrames}">
+		    	<td><input type="text" size="2" th:field="*{bowlingFrames[__${frameInd.index}__].index}" disabled="disabled"/></td>
+				<td><input size="2" th:field="*{bowlingFrames[__${frameInd.index}__].roll1}"  /></td>
+				<td><input size="2" th:field="*{bowlingFrames[__${frameInd.index}__].roll2}"  /></td>
+				<td><input id="roll3Field" size="2"  th:field="*{bowlingFrames[__${frameInd.index}__].roll3}"  /></td>
+				<td><input  size="2" th:field="*{bowlingFrames[__${frameInd.index}__].score}"  disabled="disabled"/></td>
+				<td><input type="checkbox" th:checked="*{bowlingFrames[__${frameInd.index}__].strike} ? 'checked'" disabled="disabled" /></td>
+				<td><input type="checkbox" th:checked="*{bowlingFrames[__${frameInd.index}__].spare} ? 'checked'" disabled="disabled" /></td>
+				<td><input type="checkbox" th:checked="*{bowlingFrames[__${frameInd.index}__].miss} ? 'checked'" disabled="disabled" /></td>
+			</tr>
 	</table>
 	<div class="form-group last">
 		<div class="col-sm-offset-3 col-sm-9">
 		<input name="submit" type="submit" value="Calculate" class="btn btn-primary btn-sm" />
-		<button type="reset" class="btn btn-default btn-sm">Reset</button>
+		<button type="reset"  onclick="location.href = '/home'" class="btn btn-default btn-sm">Reset</button>
+		</div>
+		<br><br>
+		<div class="col-sm-offset-3 col-sm-9">
+			  <strong class="alert alert-success">Score: <input size="3" th:field="${bowlingForm.score}" disabled="disabled"/></strong>
 		</div>
 	</div>
 </form>
-
-
-
-
 </div>
-	
+
 </body>
 </html>

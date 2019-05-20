@@ -1,24 +1,33 @@
 package com.genios.bowling;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class Frame {
-	
+
 	private Integer index;
+
+	@NotNull
 	private Integer roll1;
+	@NotNull
 	private Integer roll2;
+
 	private Integer roll3;
+
 	private Integer score;
-	
+
 	private Boolean isStrike;
 	private boolean isSpare;
 	private boolean isMiss;
 	private boolean isLastFrame;
-	
-	
+
+
 	private String placeHolder1;
 	private String placeHolder2;
 	private String playerName;
 	private Boolean isComplete;
-	
+
 	public Integer getIndex() {
 		return index;
 	}
@@ -97,7 +106,7 @@ public class Frame {
 	public void setComplete(Boolean isComplete) {
 		this.isComplete = isComplete;
 	}
-	
-	
+
+
 
 }

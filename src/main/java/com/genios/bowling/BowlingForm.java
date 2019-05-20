@@ -3,10 +3,25 @@ package com.genios.bowling;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 public class BowlingForm {
-	
+
 	private String playerName;
+
+	@Valid
 	private List<Frame> bowlingFrames;
+
+	private String errorMessage;
+
+
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
 	private Integer score;
 	private boolean isGameOver;
 	public String getPlayerName() {
@@ -33,10 +48,10 @@ public class BowlingForm {
 	public void setGameOver(boolean isGameOver) {
 		this.isGameOver = isGameOver;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 
 }
