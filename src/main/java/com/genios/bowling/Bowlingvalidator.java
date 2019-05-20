@@ -117,8 +117,7 @@ public class Bowlingvalidator implements Validator{
 				errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Sum of Rolls for Frame  " + frame.getIndex() + BowlingUtil.GREATER_THAN_10);
 			});
 
-			/* TODO: Validation to inform user that roll3 score would be considered only in case of Strike/Spare
-			 * bowlingForm.getBowlingFrames()
+			 bowlingForm.getBowlingFrames()
 			.stream()
 			.filter(frame -> frame.getRoll3().intValue()  != 0)
 			.collect(Collectors.toList())
@@ -126,13 +125,13 @@ public class Bowlingvalidator implements Validator{
 				if(!frame.getIndex().equals(10))
 				errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Only zero is permitted in Roll3 for Frame  " + frame.getIndex());
 				else if(frame.getIndex().equals(10)){
-					Integer totalScore = frame.getRoll1() + frame.getRoll2();
+					//TODO: Validation to inform user that roll3 score would be considered only in case of Strike/Spare
+					/*Integer totalScore = frame.getRoll1() + frame.getRoll2();
 					if((totalScore.equals(10)  )|| frame.getRoll1().equals(10)) {
 						errors.rejectValue(BowlingUtil.ERROR_MESSAGE, BowlingUtil.ERROR_MESSAGE, "Roll3 score is considered only in case of Strike/Spare for Frame  " + frame.getIndex());
-					}
-
+					}*/
 				}
-			});*/
+			});
 			bowlingForm.getBowlingFrames()
 			.stream()
 			.filter(frame -> frame.getIndex() == 10)
